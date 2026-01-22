@@ -6,13 +6,13 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    ports:
-      - "${BACKEND_PORT:-3001}:3001"
+    expose:
+      - "3000"
     environment:
       - environ=prod
+      - PORT=3000
       - secretKey=${SECRET_KEY}
       - saltRounds=5
-      - PORT=3001
       - MONGO_URI=${MONGO_URI}
     restart: unless-stopped
     networks:
@@ -24,13 +24,14 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        - BACKEND_URL=${BACKEND_URL:-http://backend:3001}
-    ports:
-      - "${FRONTEND_PORT:-3000}:3000"
+        - BACKEND_URL=${BACKEND_URL}
+    expose:
+      - "3000"
     environment:
-      - BACKEND_URL=${BACKEND_URL:-http://backend:3001}
-      - NEXTAUTH_URL=${NEXTAUTH_URL:-http://localhost:3000}
+      - BACKEND_URL=${BACKEND_URL}
+      - NEXTAUTH_URL=${NEXTAUTH_URL}
       - NEXTAUTH_SECRET=${SECRET_KEY}
+      - PUBLIC_URL=${FRONTEND_PUBLIC}
       - PORT=3000
     restart: unless-stopped
     depends_on:
