@@ -7,6 +7,8 @@ RUN npm install --frozen-lockfile
 
 COPY . .
 
+ARG BACKEND_URL
+ENV BACKEND_URL=$BACKEND_URL
 ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN npm run build
