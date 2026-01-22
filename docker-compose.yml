@@ -23,6 +23,8 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        - BACKEND_URL=${BACKEND_URL:-http://backend:3001}
     ports:
       - "${FRONTEND_PORT:-3000}:3000"
     environment:
