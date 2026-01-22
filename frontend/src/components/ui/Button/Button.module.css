@@ -1,0 +1,68 @@
+.button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Primary Variant (Gradient Purple) */
+.primary {
+    background: linear-gradient(135deg, #8a2be2, #4b0082);
+    color: white;
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+}
+
+.primary:hover {
+    background: linear-gradient(135deg, #9d4ced, #5c0099);
+    box-shadow: 0 6px 20px rgba(138, 43, 226, 0.6);
+    transform: translateY(-1px);
+}
+
+.primary:active {
+    transform: translateY(1px);
+}
+
+/* Secondary/Ghost Variant */
+.secondary {
+    background: transparent;
+    border: 1px solid #2e2e42;
+    color: #fff;
+}
+
+.secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #8a2be2;
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #333 !important;
+    /* Force disabled color */
+    box-shadow: none !important;
+}
+
+.loadingSpinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

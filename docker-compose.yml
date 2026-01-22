@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: easygenerator-auth-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "${BACKEND_PORT:-3001}:3001"
+    env_file:
+      - ./backend/.env
+    environment:
+      - environ=prod
+      - secretKey=${SECRET_KEY}
+      - saltRounds=5
+      - PORT=3001
+      - MONGO_URI=${MONGO_URI}
+    restart: unless-stopped
+    networks:
+      - easygenerator-network
+
+  frontend:
+    container_name: easygenerator-auth-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    environment:
+      - BACKEND_URL=${BACKEND_URL:-http://backend:3001}
+      - NEXTAUTH_URL=${NEXTAUTH_URL:-http://localhost:3000}
+      - NEXTAUTH_SECRET=${SECRET_KEY}
+      - PORT=3000
+    restart: unless-stopped
+    depends_on:
+      - backend
+    networks:
+      - easygenerator-network
+
+networks:
+  easygenerator-network:
+    driver: bridge

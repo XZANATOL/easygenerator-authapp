@@ -1,0 +1,100 @@
+.inputWrapper {
+    margin-bottom: 1.5rem;
+    position: relative;
+    width: 100%;
+}
+
+.label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #a0a0b0;
+}
+
+.input {
+    width: 100%;
+    background-color: #1f1f2e;
+    border: 1px solid #2e2e42;
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.input:focus {
+    border-color: #8a2be2;
+    box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+    background-color: #252535;
+}
+
+.input::placeholder {
+    color: #555566;
+}
+
+.errorBorder {
+    border-color: #ff4d4d;
+}
+
+.errorBorder:focus {
+    border-color: #ff4d4d;
+    box-shadow: 0 0 0 2px rgba(255, 77, 77, 0.2);
+}
+
+.errorMessage {
+    color: #ff4d4d;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555566;
+    display: flex;
+    /* Fix vertical alignment */
+}
+
+/* Specific adjustment if label exists, handled in JS logic or clearer CSS? 
+   Actually, the icon depends on input height. 
+   My previous CSS had hardcoded top: 10px or similar. 
+   Let's better position it relative to the INPUT, not reference wrapper.
+*/
+.inputContainer {
+    position: relative;
+}
+
+.inputWithIcon {
+    padding-left: 44px;
+}
+
+.inputWithToggle {
+    padding-right: 44px;
+}
+
+.toggleButton {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #555566;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.toggleButton:hover {
+    color: #fff;
+}
