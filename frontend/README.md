@@ -132,23 +132,3 @@ BACKEND_URL=http://localhost:3000
 NEXTAUTH_URL=http://localhost:3001
 NEXTAUTH_SECRET=complex_secret_string_here
 ```
-
----
-
-# Key Features
-
-## 🎨 Premium UI/UX
-- **Glassmorphism**: Translucent cards with blur effects using custom CSS.
-- **Micro-interactions**: Hover states, focus rings, and input transitions.
-- **Animations**:
-  - Entry animations for cards and logos using `GSAP`.
-  - Smooth visibility toggle for password fields.
-
-## 🔒 Advanced Security
-- **Secure Proxying**: Backend URLs are hidden from the client via Next.js Proxy rewrites.
-- **Live Token Validation**: The frontend validates the JWT against the backend on *every* session check, ensuring immediate revocation support.
-- **HttpOnly Cookies**: Session data is secure against XSS.
-
-## ⚡ React Server Components
-- **Optimization**: Auth logic and redirects happen on the server where possible.
-- **Performance**: Static generation for auth pages, dynamic rendering for dashboard.
